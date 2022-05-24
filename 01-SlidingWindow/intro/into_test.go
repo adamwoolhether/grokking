@@ -10,7 +10,7 @@ func TestFindAveragesOfSubarrays(t *testing.T) {
 	expected := []float64{2.2, 2.8, 2.4, 3.6, 2.8}
 	expectedLen := len(expected)
 
-	result := findAveragesOfSubarrays(K, arr)
+	result := findAveragesOfSubarraysSlidingWindow(K, arr)
 	resultLen := len(result)
 
 	if expectedLen != resultLen {
