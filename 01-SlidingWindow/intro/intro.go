@@ -9,7 +9,7 @@ type numConstraints interface {
 sliding window reuses the already calculated elements, subtracting the previous one.
 BigO: O(N)
 */
-func findAveragesOfSubarraysSlidingWindow[T numConstraints](k int, arr []T) []T {
+func findAveragesOfSubarrays[T numConstraints](k int, arr []T) []T {
 	result := make([]T, len(arr)-k+1)
 
 	windowSum := T(0)
