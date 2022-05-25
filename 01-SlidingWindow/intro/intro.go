@@ -1,15 +1,16 @@
 package intro
 
-type numConstraints interface {
-	int | uint | int32 | int64 |
-	float32 | float64
+import "golang.org/x/exp/constraints"
+
+type numbers interface {
+	constraints.Float | constraints.Integer
 }
 
 /*
 sliding window reuses the already calculated elements, subtracting the previous one.
 BigO: O(N)
 */
-func findAveragesOfSubarrays[T numConstraints](k int, arr []T) []T {
+func findAveragesOfSubarrays[T numbers](k int, arr []T) []T {
 	result := make([]T, len(arr)-k+1)
 
 	windowSum := T(0)
@@ -32,7 +33,7 @@ func findAveragesOfSubarrays[T numConstraints](k int, arr []T) []T {
 /*
 BigO: O(N*K)
 */
-func findAveragesOfSubarraysBruteForce[T numConstraints](k int, arr []T) []T {
+func findAveragesOfSubarraysBruteForce[T numbers](k int, arr []T) []T {
 	result := make([]T, len(arr)-k+1)
 
 	for i := 0; i < len(arr)-k+1; i++ {

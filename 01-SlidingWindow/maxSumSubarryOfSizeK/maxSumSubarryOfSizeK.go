@@ -1,5 +1,7 @@
 package maxSumSubarryOfSizeK
 
+import "golang.org/x/exp/constraints"
+
 /*
 Given an array of positive numbers and a positive number ‘k’,
 find the maximum sum of any contiguous subarray of size ‘k’.
@@ -15,25 +17,16 @@ Output: 7
 Explanation: Subarray with maximum sum is [3, 4].
 */
 
-type numConstraints interface {
-	int | uint | int32 | int64 |
-	float32 | float64
-}
-
-func max[T numConstraints](x, y T) T {
-	if x > y {
-		return x
-	}
-
-	return y
+type numbers interface {
+	constraints.Float | constraints.Integer
 }
 
 /*
 Time Complexity: O(N)
 Space Complexity: O(1)
 */
-func findMaxSumSubArray[T numConstraints](k int, arr []T) T {
-	var maxSum, windowSum T
+func findMaxSumSubArray[T numbers](k int, arr []T) T {
+	maxSum, windowSum := T(0), T(0)
 	windowStart := 0
 
 	for windowEnd := 0; windowEnd < len(arr); windowEnd++ {
@@ -53,8 +46,8 @@ func findMaxSumSubArray[T numConstraints](k int, arr []T) T {
 /*
 Time: O(N*K)
 */
-func findMaxSumSubArrayBruteForce[T numConstraints](k int, arr []T) T {
-	var maxSum, windowSum T
+func findMaxSumSubArrayBruteForce[T numbers](k int, arr []T) T {
+	maxSum, windowSum := T(0), T(0)
 
 	for i := 0; i < len(arr)-k+1; i++ {
 		windowSum = 0
@@ -66,4 +59,12 @@ func findMaxSumSubArrayBruteForce[T numConstraints](k int, arr []T) T {
 	}
 
 	return maxSum
+}
+
+func max[T numbers](x, y T) T {
+	if x > y {
+		return x
+	}
+
+	return y
 }
