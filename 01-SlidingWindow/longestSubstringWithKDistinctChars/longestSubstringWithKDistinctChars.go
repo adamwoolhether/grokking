@@ -34,13 +34,13 @@ func longestSubstringWithKDistinct(str string, k int) int {
 	// Try to extend the range [windowStart:windowEnd] in this loop:
 	for windowEnd := 0; windowEnd < len(str); windowEnd++ {
 		rightChar := str[windowEnd]
-
 		charFrequency[rightChar]++
 
 		// Shrink the sliding window until we have 'k' distinct chars in charFrequency map.
 		for len(charFrequency) > k {
 			leftChar := str[windowStart]
 			charFrequency[leftChar]--
+
 			if charFrequency[leftChar] == 0 {
 				delete(charFrequency, leftChar)
 			}

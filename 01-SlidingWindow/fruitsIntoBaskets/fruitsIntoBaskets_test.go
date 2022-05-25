@@ -1,24 +1,22 @@
-package longestSubstringWithKDistinctChars
+package fruitsIntoBaskets
 
 import (
 	"fmt"
 	"testing"
 )
 
-func TestLongestSubstringWithKDistinct(t *testing.T) {
+func TestMaxFruitCountOf2Types(t *testing.T) {
 	testCases := []struct {
-		input    string
-		k        int
+		input    []byte
 		expected int
 	}{
-		{"araaci", 2, 4},
-		{"araaci", 1, 2},
-		{"cbbebi", 3, 5},
+		{[]byte{'A', 'B', 'C', 'A', 'C'}, 3},
+		{[]byte{'A', 'B', 'C', 'B', 'B', 'C'}, 5},
 	}
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("string: %v", tc.input), func(t *testing.T) {
-			result := longestSubstringWithKDistinct(tc.input, tc.k)
+			result := maxFruitCountOf2Types(tc.input)
 
 			if tc.expected != result {
 				t.Fatalf("Exp result %d, got %d", tc.expected, result)
