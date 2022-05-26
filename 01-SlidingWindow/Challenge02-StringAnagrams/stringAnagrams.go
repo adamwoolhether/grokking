@@ -51,6 +51,7 @@ func findStringAnagrams(str, pattern string) []int {
 
 		if windowEnd >= len(pattern)-1 {
 			leftChar := str[windowStart]
+			windowStart++
 
 			if _, ok := charFrequency[leftChar]; ok {
 				if charFrequency[leftChar] == 0 {
@@ -58,7 +59,6 @@ func findStringAnagrams(str, pattern string) []int {
 				}
 				charFrequency[leftChar]++
 			}
-			windowStart++
 		}
 	}
 
