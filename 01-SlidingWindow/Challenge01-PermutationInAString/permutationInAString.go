@@ -41,38 +41,38 @@ Space Complexity: O(M). In worse case, the pattern has all distring chars.
 */
 func findPermutation(str, pattern string) bool {
 	windowStart, matched := 0, 0
-	charMap := make(map[uint8]int)
+	charFrequency := make(map[uint8]int)
 
 	for i := 0; i < len(pattern); i++ {
-		charMap[pattern[i]]++
+		charFrequency[pattern[i]]++
 	}
 
 	// Match all characters from 'charFrequency' with the current window,
 	// trying to extend the range [windowStart, windowEnd]
 	for windowEnd := 0; windowEnd < len(str); windowEnd++ {
 		rightChar := str[windowEnd]
-		
-		if _, ok := charMap[rightChar]; ok {
+
+		if _, ok := charFrequency[rightChar]; ok {
 			// Decrement the frequency of the matched character
-			charMap[rightChar]--
-			if charMap[rightChar] == 0 {
+			charFrequency[rightChar]--
+			if charFrequency[rightChar] == 0 {
 				matched++
 			}
 		}
 
 		// All chars in the window have been matched
-		if matched == len(charMap) {
+		if matched == len(charFrequency) {
 			return true
 		}
 
 		// Shrink the sliding window.
 		if windowEnd >= len(pattern)-1 {
 			leftChar := str[windowStart]
-			if _, ok := charMap[leftChar]; ok {
-				if charMap[leftChar] == 0 {
+			if _, ok := charFrequency[leftChar]; ok {
+				if charFrequency[leftChar] == 0 {
 					matched--
 				}
-				charMap[leftChar]++
+				charFrequency[leftChar]++
 			}
 			windowStart++
 		}
