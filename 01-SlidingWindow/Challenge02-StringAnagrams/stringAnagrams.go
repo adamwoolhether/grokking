@@ -24,6 +24,11 @@ Output: [2, 3, 4]
 Explanation: The three anagrams of the pattern in the given string are "bca", "cab", and "abc".
 */
 
+/*
+Time Complexity: O(N+M), where 'N' and 'M' are
+the number of chars in the input and pattern strings, respectively.
+Space Complexity: O(M). In worse case, the pattern has all distinct chars.
+*/
 func findStringAnagrams(str, pattern string) []int {
 
 	windowStart, matched := 0, 0

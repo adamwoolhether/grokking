@@ -37,11 +37,11 @@ Explanation: The string contains "acb" which is a permutation of the given patte
 /*
 Time Complexity: O(N+M), where 'N' and 'M' are
 the number of chars in the input and pattern strings, respectively.
-Space Complexity: O(M). In worse case, the pattern has all distring chars.
+Space Complexity: O(M). In worse case, the pattern has all distinct chars.
 */
 func findPermutation(str, pattern string) bool {
 	windowStart, matched := 0, 0
-	charFrequency := make(map[uint8]int)
+	charFrequency := make(map[uint8]int, len(pattern))
 
 	for i := 0; i < len(pattern); i++ {
 		charFrequency[pattern[i]]++
