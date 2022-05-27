@@ -24,6 +24,11 @@ Output: ""
 Explanation: No substring in the given string has all characters of the pattern
 */
 
+/*
+Time Complexity: O(N+M), where 'N' and 'M' are
+the number of chars in the input and pattern strings, respectively.
+Space Complexity: O(M). In worse case, the pattern has all distinct chars.
+*/
 func minimumWindowSubstring(str, pattern string) string {
 	windowStart, matched, subStringStart := 0, 0, 0
 	minLength := len(str) + 1
