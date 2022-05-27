@@ -32,8 +32,8 @@ func wordConcatenation(str string, words []string) []int {
 	subStrLen := wordsCnt * wordLen
 	wordFrequency := make(map[string]int, len(words))
 
-	for i := 0; i < len(words); i++ {
-		wordFrequency[words[i]]++
+	for _, w := range words {
+		wordFrequency[w]++
 	}
 
 	// This solution isn't actually a proper sliding window. TODO: Implement new version.
