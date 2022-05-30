@@ -65,7 +65,6 @@ Space Complexity: O(N). Worst case is all elements pushed to hash table.
 func pairWithTargetSumAlternate[T numbers](arr []T, targetSum T) []int {
 	nums := make(map[T]int, len(arr))
 	for i, num := range arr {
-		// num := v
 		if _, ok := nums[targetSum-num]; ok {
 			return []int{nums[targetSum-num], i}
 		}
