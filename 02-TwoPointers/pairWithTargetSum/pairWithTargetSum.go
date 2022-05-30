@@ -60,8 +60,9 @@ Ex: If at position x, we need to find 'y' such that "x + y = target".
 
 Time Complexity: O(N)
 Space Complexity: O(N). Worst case is all elements pushed to hash table.
-*/
 
+This is significantly slower according to my benchmarks.
+*/
 func pairWithTargetSumAlternate[T numbers](arr []T, targetSum T) []int {
 	nums := make(map[T]int, len(arr))
 	for i, num := range arr {

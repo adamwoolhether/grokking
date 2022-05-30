@@ -50,3 +50,25 @@ func TestPairWithTargetSumAlternate(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkPairWithTargetSum(b *testing.B) {
+	arr := []float64{1, 2, 3, 4, 6}
+	k := float64(6)
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		_ = pairWithTargetSum(arr, k)
+	}
+}
+
+func BenchmarkPairWithTargetSumAlternate(b *testing.B) {
+	arr := []float64{1, 2, 3, 4, 6}
+	k := float64(6)
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		_ = pairWithTargetSumAlternate(arr, k)
+	}
+}
