@@ -46,6 +46,7 @@ func tripletWithSmallerSum[T numbers](arr []T, target T) int {
 
 	for i := 0; i < len(arr)-2; i++ {
 		left, right := i+1, len(arr)-1
+
 		for left < right {
 			currSum := arr[i] + arr[left] + arr[right]
 
