@@ -20,6 +20,7 @@ Input: [-5, 2, -1, -2, 3]
 Output: [[-5, 2, 3], [-2, -1, 3]]
 Explanation: There are two unique triplets whose sum is equal to zero.
 
+Time Complexity:
 Sorting -  O(N * logN)
 	searchPair func - O(N)
 	Because searchPair is called for every number in the input array,
