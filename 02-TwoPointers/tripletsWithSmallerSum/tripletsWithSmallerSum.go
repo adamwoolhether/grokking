@@ -29,10 +29,9 @@ Explanation: There are four triplets whose sum is less than the target:
 
 Time Complexity:
 	Sorting -  O(N * logN)
-	searchPair func - O(N^2)
-		Main while loop runs in O(N), nested for loop may take O(N)
-	tripletWithSmallerSum overall takes O(N * logN + N^3), asymptotically
-	equivalent to O(N^3).
+	outer loop: O(N)
+	tripletWithSmallerSum overall takes O(N * logN + N^2), asymptotically
+	equivalent to O(N^2).
 */
 
 type numbers interface {
@@ -62,4 +61,43 @@ func tripletWithSmallerSum[T numbers](arr []T, target T) int {
 	}
 
 	return count
+}
+
+/*
+If we want to return the array of triplet instead, the time complexity will increase
+Time Complexity:
+	Sorting -  O(N * logN)
+	searchPair func - O(N^2)
+		Main while loop runs in O(N), nested for loop may take O(N)
+	tripletWithSmallerSum overall takes O(N * logN + N^3), asymptotically
+	equivalent to O(N^3).
+*/
+
+func tripletWithSmallerSumTriplets[T numbers](arr []T, target T) [][3]T {
+	sort.Slice(arr, func(i, j int) bool { return arr[i] < arr[j] })
+
+	var triplets [][3]T
+
+	for i := 0; i < len(arr)-2; i++ {
+		left, right := i+1, len(arr)-1
+
+		for left < right {
+			currSum := arr[i] + arr[left] + arr[right]
+
+			if currSum < target {
+
+				for j := right; j > left; j-- {
+					triplets = append(triplets, [3]T{arr[i], arr[left], arr[j]})
+				}
+
+				// We found the triplet, because arr[right] >= arr[left], so replace arr[right]
+				// with any number between left and right to get a sum less that the target sum.
+				left++
+			} else {
+				right--
+			}
+		}
+	}
+
+	return triplets
 }
