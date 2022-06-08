@@ -46,15 +46,15 @@ type numbers interface {
 	constraints.Float | constraints.Integer
 }
 
-/*
-Time Complexity: O(N). Once the slow pointer enters the cycle, the fast pointer will meet it in the same loop.
-Space Complexity: O(1)
-*/
-
 type Node[T numbers] struct {
 	value T
 	next  *Node[T]
 }
+
+/*
+Time Complexity: O(N). Once the slow pointer enters the cycle, the fast pointer will meet it in the same loop.
+Space Complexity: O(1)
+*/
 
 func hasCycle[T numbers](head *Node[T]) bool {
 	slow, fast := head, head
@@ -86,7 +86,7 @@ Time Complexity: O(N)
 Space Complexity: O(1)
 */
 
-func findCycleLength[T numbers](head *Node[T]) T {
+func findCycleLength[T numbers](head *Node[T]) int {
 	slow, fast := head, head
 
 	for fast != nil && fast.next != nil {
@@ -101,9 +101,9 @@ func findCycleLength[T numbers](head *Node[T]) T {
 	return 0 // indicates that the linked list has no cycle
 }
 
-func cycleLength[T numbers](slow *Node[T]) T {
+func cycleLength[T numbers](slow *Node[T]) int {
 	current := slow
-	cycleLen := T(0)
+	cycleLen := 0
 
 	for {
 		current = current.next
