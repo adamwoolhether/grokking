@@ -33,6 +33,12 @@ type Node[T numbers] struct {
 	next  *Node[T]
 }
 
+/*
+Time Complexity: O(N)
+Space Complexity: O(N)
+
+*/
+
 func findCycleStart[T numbers](head *Node[T]) *Node[T] {
 	cycleLen := 0
 	slow, fast := head, head
