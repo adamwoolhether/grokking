@@ -39,6 +39,11 @@ type Node[T numbers] struct {
 	next  *Node[T]
 }
 
+/*
+Time Complexity: O(N), where 'N' is the number of nodes in the linked list.
+Space Complexity: O(1)
+*/
+
 func findMiddle[T numbers](head *Node[T]) *Node[T] {
 	slow, fast := head, head
 
