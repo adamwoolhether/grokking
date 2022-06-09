@@ -46,6 +46,21 @@ fast & slow pointer strategy to find the cycle and once the cycle is found, we w
 see if the cycle is stuck on number ‘1’ to find out if the number is happy or not.
 */
 
+/*
+Time Complexity: O(logN)
+	All unhappy numbers eventually get stuck in cycle. This means:
+	1. If N <= 1000, then '1' will be reached in at most 1001 steps.
+	2. If N > 1000, supposing number has 'M' digits, and next number is 'N1',
+	then the sum of sqaures of digits 'N' is at most 9^2M, or 81M(when all diging of 'N' are '9'.
+
+	Therefore:
+	1. N1 < 81M
+	2. M = log(N + 1)
+	3. So: N1 < 81 * log(N + 1) => N1 = O(logN)
+
+Space Complexity: O(1)
+*/
+
 func findHappyNumber[T constraints.Integer](num T) bool {
 	fast, slow := num, num
 
