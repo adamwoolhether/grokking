@@ -51,13 +51,8 @@ func NewInterval(start, end int) Interval {
 	}
 }
 
-func max(x, y int) int {
-	if x > y {
-		return x
-	}
-	return y
-}
-
+// merge will return a slice of all intervals that overlap.
+// Time Complexity: O(N * log N)
 func merge(intervals []Interval) []Interval {
 	if len(intervals) < 2 {
 		return intervals
@@ -86,4 +81,11 @@ func merge(intervals []Interval) []Interval {
 	mergedIntervals = append(mergedIntervals, NewInterval(start, end))
 
 	return mergedIntervals
+}
+
+func max(x, y int) int {
+	if x > y {
+		return x
+	}
+	return y
 }
