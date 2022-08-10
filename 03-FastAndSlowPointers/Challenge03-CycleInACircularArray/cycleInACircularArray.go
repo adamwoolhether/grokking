@@ -49,6 +49,11 @@ type numbers interface {
 	constraints.Float | constraints.Integer
 }
 
+/*
+Time Complexity: O(N^2)
+Space Complexity: O(N)
+*/
+
 func circularArrayLoopExists[T numbers](arr []T) bool {
 	for i := 0; i < len(arr); i++ {
 		isForward := arr[i] >= 0 // determine if we move forward or not
