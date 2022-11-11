@@ -18,6 +18,11 @@ How to solve:
 3. `result` will be the number that has only appeared once.
 */
 
+// singleNumber will determine which number in a given array
+// only appears once. All other numbers should appear twice.
+//
+// O(n)
+// Where n is the total number of elements in the array.
 func singleNumber(nums []int) int {
 	result := 0
 	for i := range nums {
