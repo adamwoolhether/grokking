@@ -56,7 +56,7 @@ func wordConcatenation(str string, words []string) []int {
 				break
 			}
 
-			if j == wordsCnt-1 { // Store index if all words are found.
+			if j == wordsCnt-1 { // store index if all words are found.
 				resultIdx = append(resultIdx, i)
 			}
 
