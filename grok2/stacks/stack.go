@@ -25,7 +25,7 @@ func (s *Stack[T]) Pop() T {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
-	if len(s.data) == 0 {
+	if s.isEmpty() {
 		return s.nilType()
 	}
 
@@ -39,7 +39,7 @@ func (s *Stack[T]) Peak() T {
 	s.mu.RLock()
 	defer s.mu.RUnlock()
 
-	if len(s.data) == 0 {
+	if s.isEmpty() {
 		return s.nilType()
 	}
 
@@ -53,8 +53,9 @@ func (s *Stack[T]) Size() int {
 	return len(s.data)
 }
 
-func (s *Stack[T]) IsEmpty() bool {
-	return s.Size() == 0
+func (s *Stack[T]) isEmpty() bool {
+	// no locking, as this is internal and should be done by caller.
+	return len(s.data) == 0
 }
 
 func (s *Stack[T]) nilType() T {
