@@ -25,6 +25,12 @@ How to solve:
 5. If you can move each current target back all the way to the first index, the path is available, return true.
 */
 
+// jumpGame will determine if a person starting at the first square is able to
+// reach the last, if they can only take at most the amount of steps given by
+// the square's value.
+//
+// Time Complexity: O(n)
+// Space: O(1)
 func jumpGame(nums []int) bool {
 	target := len(nums) - 1
 
