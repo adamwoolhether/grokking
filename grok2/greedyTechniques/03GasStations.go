@@ -24,6 +24,12 @@ How to solve:
 5. Return starting index at end of traversal.
 */
 
+// gasStationJourney determines if a round trip can be made
+// based on the unit-cost of gas to get to the next station,
+// and the amt of gas obtained from arriving at the station.
+//
+// Time Complexity: O(n).... Technically (2n)???
+// Space Complexity: O(1)
 func gasStationJourney(gas []int, cost []int) int {
 	var totalGas int
 	var totalCost int
